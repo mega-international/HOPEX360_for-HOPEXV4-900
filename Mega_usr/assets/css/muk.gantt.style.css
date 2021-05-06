@@ -1,0 +1,130 @@
+.emptyrow_task {
+    border: 0px;
+    opacity: 0.0;
+    color: #FFFFFF;
+    background: #FFFFFF;
+}
+
+.onerow_task {
+    box-sizing: border-box;
+    margin-top: 2px;
+    position: absolute;
+    z-index: 1;
+    color: #000000;
+    text-align: center;
+    font-size: 12px;
+}
+
+.onerowformilestones_task {
+    box-sizing: border-box;
+    margin-top: 2px;
+    position: absolute;
+    z-index: 1;
+    color: #000000;
+    text-align: center;
+    font-size: 12px;
+}
+
+.gantt_task_line {
+    border: #FFFFFF;
+    background-color: #FFFFFF;
+	border-radius: 25px;
+}
+
+.gantt_task_content {
+    font-size: 12px;
+    color: #000000;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.gantt_task_line.task-collapsed {
+    height: 4px;
+    opacity: 0.25;
+}
+
+.gantt_task_line.gantt_project.task-collapsed .gantt_task_content {
+    display: none;
+}
+
+.gantt_row.task-parent {
+    font-weight: bold;
+}
+
+.project .gantt_task_progress {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 10px;
+    color: #000000;
+}
+
+.preparation_period {
+    border: 2px solid #cf9c00;
+    color: #000000;
+    background: #cf9c00;
+}
+
+.production_period {
+    border: 2px solid #15a80d;
+    color: #000000;
+    background: #15a80d;
+}
+
+.retirement_period {
+    border: 2px solid #cd2701;
+    color: #000000;
+    background: #cd2701;
+}
+
+.nostereotype_period {
+    border: 2px solid #999999;
+    color: #000000;
+    background: #999999;
+}
+
+.gantt_milestone.default_milestone {
+    border: 2px solid #5883AD;
+    color: #000000;
+    background-color: #C5D3E2;
+}
+
+.default_milestone {
+    border: 2px solid #5883AD;
+    color: #000000;
+    background-color: #C5D3E2;
+}
+
+.gantt_milestone.default_timespot {
+    border: 2px solid #395775;
+    color: #000000;
+    background-color: #7A99BC;
+}
+
+.default_timespot_period {
+    border: 2px solid #395775;
+    color: #000000;
+    background: #7A99BC;
+    background-color: #7A99BC;
+}
+
+.conflict_period {
+    border: 2px solid #5c150e;
+    color: #000000;
+    background: #e6675a;
+}
+
+.project_start_line {
+    background-color: #00FF00 !important;
+}
+
+.project_end_line {
+    background-color: #FF0000 !important;
+}
+
+.project_current_line {
+    background-color: #00FFFF !important;
+}
