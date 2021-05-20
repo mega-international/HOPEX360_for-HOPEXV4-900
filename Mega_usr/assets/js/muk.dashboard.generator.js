@@ -349,6 +349,7 @@ var MgsDashboardUtility = {
 
 function MgsDashboard(container, options, data) {
 	var self = this;
+	var loadloop = false;
 	var isLoaded = false;
 	var _defaultOptions = {
 		//colorScheme: ["#5aa972", "#F4C557", "#d94153"],
@@ -412,11 +413,40 @@ function MgsDashboard(container, options, data) {
 	function loadData() {
 		if (!self.data) {
 			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.responseType = 'json';
 			var url = self.dataURL;
+			var preloader = document.getElementById("loading");
 			xmlhttp.onreadystatechange = function () {
+				// test
+				const start = Date.now();
 				if (this.readyState == 4 && this.status == 200) {
-					self.data = JSON.parse(this.responseText);
+					// test
+					console.log("start");
+					
+					//self.data = JSON.parse(this.responseText);
+					xmlhttp.onload  = function() {
+					   console.log("xmlhttp.onload");
+					   console.log(Date.now() - start);
+					   self.data = xmlhttp.response;
+					   console.log("xmlhttp.response after");
+					   console.log(Date.now() - start);
+					};
+					console.log("loadData");
+					console.log(Date.now() - start);
 					loadData();
+					//$('#status').fadeOut(); // will first fade out the loading animation
+					//$('#preloader').delay(50).fadeOut(100);
+					//$('#contentdash').delay(50).css({'overflow':'visible'});
+					if(loadloop == false) {
+						loadloop = true; 
+						console.log("loadloop false yes");
+					} else {
+						preloader.style.display = 'none';
+						console.log("loadloop false no");
+					}
+					
+					console.log("loadData after");
+					console.log(Date.now() - start);
 				}
 			};
 			xmlhttp.open("GET", url, true);
