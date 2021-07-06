@@ -2313,7 +2313,7 @@ var MgsDashboardChartRenderers = {
 		var boxInBox, ctx;
 		var data;
 		var _defaultOptions = {
-			hideStructureWithNoData:true,
+			hideStructureWithNoData:false,
 			valueEmpty : { "id": "", "name": "Not Selected" },
 			shapeGuiNames:{
 				background:"Background",

@@ -3,7 +3,7 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
     var structureInitialised = false;
     var firstUpdateAttempted = false;
     var _defaultOptions = {
-        hideStructureWithNoData:true,
+        hideStructureWithNoData:false,
         valueEmpty : { "id": "", "name": "Not Selected" },
         shapeGuiNames:{
             background:"Background",
