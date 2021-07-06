@@ -1,5 +1,5 @@
 
-- Execution     : Export (2021/07/06 06:59:43)
+- Execution     : Export (2021/07/06 07:30:07)
 - File exported : C:\Users\FBT\Desktop\H360_v2.3\LOG0706.mgl
 - Environment   : C:\Users\Public\Documents\HOPEX V4\wel-testacc4-vm\ONE_REFERENCE\ONE_REFERENCE
 - Database      : DEMO
@@ -17640,3 +17640,11 @@ ndDate",
 00680ONSWRY1p87HlTMzcB6HkQ7GW86vbT6LoRd9rCIqW2GeDVGa92GeDANq9OayeOsLg82nq
 00362T65DRIveB7XXOKqWBcXqRcbj3JifVGaA3GeD07qA
 .
+
+-  "~uMOYrdeyqO00[Web Site Template]" "HOPEX360_900_v2.3"
+.Update ."~uMOYrdeyqO00[Web Site Template]" "HOPEX360_900_v2.3" -
+        .CHK "GjcP36BmWzBRwIOpSvDHVn80" -
+        ."~c4Z7zM2OxaL0[LanguageUpdateDate (English)]"       "2021/07/06 07:29:22" -
+        ."~610000000P00[Modification Date]"                  "2021/07/06 07:29:22" -
+        ."~b10000000L20[Modifier]"                           "wIOpSvDHVn80" -
+        ."~FpDyR5uj6WZC[Name (English)]"                     "HOPEX360_900_v2.3"
