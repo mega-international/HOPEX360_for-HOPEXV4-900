@@ -421,32 +421,34 @@ function MgsDashboard(container, options, data) {
 				const start = Date.now();
 				if (this.readyState == 4 && this.status == 200) {
 					// test
-					console.log("start");
+					//console.log("start");
 					
 					//self.data = JSON.parse(this.responseText);
 					xmlhttp.onload  = function() {
-					   console.log("xmlhttp.onload");
-					   console.log(Date.now() - start);
+					   //console.log("xmlhttp.onload");
+					   //console.log(Date.now() - start);
 					   self.data = xmlhttp.response;
-					   console.log("xmlhttp.response after");
-					   console.log(Date.now() - start);
+					   //console.log("xmlhttp.response after");
+					   //console.log(Date.now() - start);
 					};
-					console.log("loadData");
-					console.log(Date.now() - start);
+					//console.log("loadData");
+					//console.log(Date.now() - start);
 					loadData();
 					//$('#status').fadeOut(); // will first fade out the loading animation
 					//$('#preloader').delay(50).fadeOut(100);
 					//$('#contentdash').delay(50).css({'overflow':'visible'});
 					if(loadloop == false) {
 						loadloop = true; 
-						console.log("loadloop false yes");
+						//console.log("loadloop false yes");
 					} else {
-						preloader.style.display = 'none';
-						console.log("loadloop false no");
+						if (preloader)	{
+							preloader.style.display = 'none';
+						}
+						//console.log("loadloop false no");
 					}
 					
-					console.log("loadData after");
-					console.log(Date.now() - start);
+					//console.log("loadData after");
+					//console.log(Date.now() - start);
 				}
 			};
 			xmlhttp.open("GET", url, true);
@@ -921,8 +923,15 @@ var MgsDashboardFilterRenderers = {
 		self.eSelect.onchange = function () {
 			self.currentValue = (self.eSelect.value && self.eSelect.value !== "") ? self.eSelect.value : null;
 			if (self.currentValue === null) {
+				if (!self.options.datastructureSelect) {
 				self.currentOption = self.options.valueEmpty;
-				dataStructure = [];
+				//dataStructure = [];
+				//dataStructure = self.options.values[i];
+				console.log("currentValue null" );
+				} else {
+					self.currentOption = self.options.valueEmpty;
+					dataStructure = [];
+				}
 			} else {
 				// console.log("self.currentValue select "+self.currentValue);
 				for (var i = 0; i < self.options.values.length; i++) {
@@ -934,7 +943,9 @@ var MgsDashboardFilterRenderers = {
 						break;
 					}
 					if (self.options.values[i].id == self.currentValue && self.options.datastructureSelect) {
-						// self.currentOption = self.options.values[i];
+						console.log("self.currentOption = self.options.values[i] FALSE " );
+
+						//self.currentOption = self.options.values[i];
 						dataStructure = self.options.values[i]; 
 						break;
 					}
@@ -2313,7 +2324,7 @@ var MgsDashboardChartRenderers = {
 		var boxInBox, ctx;
 		var data;
 		var _defaultOptions = {
-			hideStructureWithNoData:false,
+			hideStructureWithNoData:true,
 			valueEmpty : { "id": "", "name": "Not Selected" },
 			shapeGuiNames:{
 				background:"Background",

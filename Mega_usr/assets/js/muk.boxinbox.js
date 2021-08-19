@@ -3,7 +3,7 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
     var structureInitialised = false;
     var firstUpdateAttempted = false;
     var _defaultOptions = {
-        hideStructureWithNoData:false,
+        hideStructureWithNoData:true,
         valueEmpty : { "id": "", "name": "Not Selected" },
         shapeGuiNames:{
             background:"Background",
@@ -307,7 +307,7 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
         var eButtonArrow = document.createElement("span");
         eButtonArrow.style.marginRight = "auto";
         eButtonArrow.style.color = "white";
-		console.log("accordionTypeFilter "+accordionTypeFilter);
+		//console.log("accordionTypeFilter "+accordionTypeFilter);
 		if (accordionTypeFilter) {
 			eButtonArrow.classList.add("fa"); 
 			eButtonArrow.classList.add("fa-wrench"); 
@@ -574,6 +574,8 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
         currentContainer.classList.add("row");
         currentContainer.classList.add("justify-content-start");
         while (currentContainer.firstChild) {currentContainer.removeChild(currentContainer.lastChild);}	
+		console.log("currentValueTemp " +currentValueTemp);
+		console.log("currentContainer " +currentContainer);
 	
 		if (!structure || structure.length === 0) {
 			// No Data to Display
@@ -594,22 +596,22 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
 		} else {
 			if (typeof dataStructure.id == 'undefined' && dataStructure.id == null) {
 			// full structure
-				console.log("dataStructure.id undefined");
-				console.log("dataStructure.id null "+JSON.stringify(dataStructure));
+				//console.log("dataStructure.id undefined");
+				//console.log("dataStructure.id null "+JSON.stringify(dataStructure));
 				for (var i =0; i < structure.length; i++){
-					console.log("loop "+[i]);
-					console.log("structure.id"+[i]+structure[i].id);
+					//console.log("loop "+[i]);
+					//console.log("structure.id"+[i]+structure[i].id);
 					drawStructure(structure[i], currentContainer);
 				}
 			} else {
 				console.log("dataStructure defined");
 				console.log("dataStructure defined "+JSON.stringify(dataStructure));
 				for (var i =0; i < structure.length; i++){
-					console.log("data.structure"+[i]+" "+data.structure[i].id);
-					console.log("dataStructure.id "+dataStructure.id);
-					console.log("structure[i].id "+structure[i].id);
+					//console.log("data.structure"+[i]+" "+data.structure[i].id);
+					//console.log("dataStructure.id "+dataStructure.id);
+					//console.log("structure[i].id "+structure[i].id);
 					if (structure[i].id === dataStructure.id) {
-						console.log("structure[i].id === dataStructure.id");
+						//console.log("structure[i].id === dataStructure.id");
 						drawStructure(structure[i], currentContainer);
 					}
 				}
@@ -653,6 +655,7 @@ var MgsBoxInBoxChart = function(eParentContainer, options){
     function filterStructureData(currentNode){
 
         var children = (currentNode)?currentNode.children:fData.structure;
+		//console.log("children "+children);
         if (!children) return;
         var fChildren = [];
         for (var i = 0; i < children.length; i++){
