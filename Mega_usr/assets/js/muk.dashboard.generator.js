@@ -207,18 +207,18 @@ var MgsDashboardUtility = {
 					return values;
 				} else if (i == fields.length - 1) {
 					if (Array.isArray(currentObject)) {
-						for (var j = 0; j < currentObject.length; j++) {
-							if (!currentObject[j].id) continue;
-							var bFound = false;
-							for (var k = 0; k < values.length; k++) {
-								if (values[k].id === currentObject[j].id) {
-									bFound = true;
-									break;
-								}
-							}
-							if (!bFound && currentObject[j].classId && (!logic.classId || logic.classId.indexOf(currentObject[j].classId) > -1))
-								values.push(currentObject[j]);
-						}
+						// for (var j = 0; j < currentObject.length; j++) {
+							// if (!currentObject[j].id) continue;
+							// var bFound = false;
+							// for (var k = 0; k < values.length; k++) {
+								// if (values[k].id === currentObject[j].id) {
+									// bFound = true;
+									// break;
+								// }
+							// }
+							// if (!bFound && currentObject[j].classId && (!logic.classId || logic.classId.indexOf(currentObject[j].classId) > -1))
+								// values.push(currentObject[j]);
+						// }
 					} else {
 						if (currentObject.id && currentObject.classId && (!logic.classId || logic.classId.indexOf(currentObject.classId) > -1))
 							values.push(currentObject);
@@ -441,9 +441,7 @@ function MgsDashboard(container, options, data) {
 						loadloop = true; 
 						//console.log("loadloop false yes");
 					} else {
-						if (preloader)	{
-							preloader.style.display = 'none';
-						}
+						preloader.style.display = 'none';
 						//console.log("loadloop false no");
 					}
 					
@@ -923,15 +921,8 @@ var MgsDashboardFilterRenderers = {
 		self.eSelect.onchange = function () {
 			self.currentValue = (self.eSelect.value && self.eSelect.value !== "") ? self.eSelect.value : null;
 			if (self.currentValue === null) {
-				if (!self.options.datastructureSelect) {
 				self.currentOption = self.options.valueEmpty;
-				//dataStructure = [];
-				//dataStructure = self.options.values[i];
-				console.log("currentValue null" );
-				} else {
-					self.currentOption = self.options.valueEmpty;
-					dataStructure = [];
-				}
+				dataStructure = [];
 			} else {
 				// console.log("self.currentValue select "+self.currentValue);
 				for (var i = 0; i < self.options.values.length; i++) {
@@ -943,9 +934,7 @@ var MgsDashboardFilterRenderers = {
 						break;
 					}
 					if (self.options.values[i].id == self.currentValue && self.options.datastructureSelect) {
-						console.log("self.currentOption = self.options.values[i] FALSE " );
-
-						//self.currentOption = self.options.values[i];
+						// self.currentOption = self.options.values[i];
 						dataStructure = self.options.values[i]; 
 						break;
 					}
@@ -981,7 +970,7 @@ var MgsDashboardFilterRenderers = {
 
 		}
 
-		self.options.valueEmpty = self.options.valueEmpty ? self.options.valueEmpty : { "id": "", "name": "Not Selected" };
+		self.options.valueEmpty = self.options.valueEmpty ? self.options.valueEmpty : { "id": "", "name": "-" };
 
 		for (var i = -1; i < self.options.values.length; i++) {
 			var value = (i < 0) ? self.options.valueEmpty : self.options.values[i];
@@ -2324,19 +2313,19 @@ var MgsDashboardChartRenderers = {
 		var boxInBox, ctx;
 		var data;
 		var _defaultOptions = {
-			hideStructureWithNoData:true,
-			valueEmpty : { "id": "", "name": "Not Selected" },
+			hideStructureWithNoData:false,
+			valueEmpty : { "id": "", "name": "-" },
 			shapeGuiNames:{
-				background:"Background",
-				circle:"Circle",
-				triangle:"Triangle",
-				square:"Square",
-				hexagon:"Hexagon",
-				star:"Star"
+				background:"\u25A9", //u25A2
+				circle:"\u25EF ", //circle  u25CB
+				triangle:"\u25B3", //triangle
+				square:"\u25FB", //square   &#9633; u25A1
+				hexagon:"\u2B21", //Hexagon
+				star:"\u2606"
 			},
 			sectionGuiNames:{
-				filters:"Filters",
-				legend:"Legend"
+				filters:"_______", 
+				legend:"_______"
 			},
 			shapeSize:"16px",
 			colorScheme: dashboardChart.dashboard.options.colorScheme?dashboardChart.dashboard.options.colorScheme:["#5aa972", "#F4C557", "#d94153"]
