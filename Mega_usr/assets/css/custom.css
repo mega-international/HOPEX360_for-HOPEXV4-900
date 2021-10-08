@@ -1597,3 +1597,11 @@ font-size:12px;
 	 no-repeat center center;	
 	z-index: 99999;
 }
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
